@@ -1,0 +1,1 @@
+export { H1, H2, H3, P, Lead, Small } from './Typography';

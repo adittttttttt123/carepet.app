@@ -3,23 +3,24 @@ import { cn } from '@/lib/utils';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   hover?: boolean;
-  shadow?: 'sm' | 'md' | 'lg';
+  shadow?: 'none' | 'sm' | 'md' | 'lg';
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, hover = false, shadow = 'md', children, ...props }, ref) => {
-    const shadowClasses = {
+    const shadowClass = {
+      none: '',
       sm: 'shadow-sm',
       md: 'shadow-md',
       lg: 'shadow-lg',
-    };
-
+    }[shadow];
+    
     return (
       <div
         ref={ref}
         className={cn(
           'bg-white rounded-xl border border-gray-200',
-          shadowClasses[shadow],
+          shadowClass,
           hover && 'hover:shadow-lg transition-shadow duration-200',
           className
         )}
@@ -33,6 +34,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 
 Card.displayName = 'Card';
 
+// Card Subcomponents
 const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -46,7 +48,7 @@ const CardHeader = React.forwardRef<
 CardHeader.displayName = 'CardHeader';
 
 const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
+  HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
   <h3
@@ -63,7 +65,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('text-sm text-gray-600', className)}
+    className={cn('text-gray-600', className)}
     {...props}
   />
 ));
