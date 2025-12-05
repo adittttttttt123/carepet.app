@@ -1,4 +1,4 @@
-import HeroSection from "./HeroSection";
+import HeroSection from "./organisms/HeroSection/HeroSection";
 
 export default function Homesection() {
     return (
