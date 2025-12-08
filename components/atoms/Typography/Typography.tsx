@@ -6,7 +6,7 @@ const H1 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeading
   ({ className, ...props }, ref) => (
     <h1
       ref={ref}
-      className={cn('text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl', className)}
+      className={cn('text-4xl font-bold text-gray-100 md:text-5xl lg:text-6xl', className)}
       {...props}
     />
   )
@@ -17,7 +17,7 @@ const H2 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeading
   ({ className, ...props }, ref) => (
     <h2
       ref={ref}
-      className={cn('text-3xl font-bold text-gray-900 md:text-4xl', className)}
+      className={cn('text-3xl font-bold text-gray-200 md:text-4xl', className)}
       {...props}
     />
   )
@@ -28,7 +28,7 @@ const H3 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeading
   ({ className, ...props }, ref) => (
     <h3
       ref={ref}
-      className={cn('text-2xl font-bold text-gray-900', className)}
+      className={cn('text-2xl font-bold text-gray-200', className)}
       {...props}
     />
   )
@@ -40,7 +40,7 @@ const P = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagr
   ({ className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn('text-gray-600', className)}
+      className={cn('text-gray-300 leading-relaxed', className)}
       {...props}
     />
   )
@@ -51,7 +51,7 @@ const Lead = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLPar
   ({ className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn('text-lg text-gray-600', className)}
+      className={cn('text-lg text-gray-300 leading-relaxed', className)}
       {...props}
     />
   )
@@ -62,7 +62,7 @@ const Small = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLPa
   ({ className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn('text-sm text-gray-500', className)}
+      className={cn('text-sm text-gray-400', className)}
       {...props}
     />
   )

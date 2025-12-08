@@ -56,7 +56,7 @@ const StatsCard = React.forwardRef<HTMLDivElement, StatsCardProps>(
             
             {/* Description */}
             {description && (
-              <Lead className="text-gray-200 opacity-80">
+              <Lead className="text-white opacity-80">
                 {description}
               </Lead>
             )}

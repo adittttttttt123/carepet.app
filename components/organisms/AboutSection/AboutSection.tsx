@@ -155,11 +155,11 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
                 Tentang Kami
               </span>
             </div>
-            <H1 className="mb-6">
+            <H1 className="mb-6 ">
               <span className="text-[#31694E]">Merawat</span> dengan{' '}
               <span className="text-[#658C58]">Kasih Sayang</span>
             </H1>
-            <Lead className="text-gray-200 mb-8">
+            <Lead className="text-white mb-8">
               Sejak 2010, Care Pet telah menjadi rumah kedua untuk ribuan hewan peliharaan. 
               Kami percaya setiap hewan layak mendapatkan perawatan terbaik dengan kasih sayang penuh.
             </Lead>
@@ -181,7 +181,7 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 ">
             {stats.map((stat, index) => (
               <div key={index}>
                 <StatsCard {...stat} />
@@ -192,7 +192,7 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
           {/* Features Section */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <H2 className="mb-4 text-[#31694E]">
+              <H2 className="mb-4 text-[#BBC863]">
                 Mengapa Memilih Kami?
               </H2>
               <P className="text-gray-200 max-w-2xl mx-auto">
@@ -262,7 +262,7 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
                     className="w-10 h-10 rounded-full flex items-center justify-center mr-3"
                     style={{ backgroundColor: '#F0E491' }}
                   >
-                    <UsersIcon style={{ color: '#31694E' }} />
+                    <UsersIcon />
                   </div>
                   <div>
                     <p 
@@ -319,7 +319,7 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
                 <Button 
                   variant="secondary" 
                   size="lg"
-                  className="bg-white hover:bg-gray-100 text-[#31694E]"
+                  className="border-white text-white hover:bg-white/10"
                 >
                   Booking Sekarang
                 </Button>
