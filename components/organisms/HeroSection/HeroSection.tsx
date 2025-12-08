@@ -26,7 +26,7 @@ const HeroSection = () => {
               <span className="text-[#BBC863]">Terbaik</span>
             </h1>
             
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-gray-200 mb-8">
               Layanan grooming, kesehatan, dan penitipan hewan profesional dengan{' '}
               <span className="text-[#658C58] font-semibold">perhatian penuh kasih sayang</span>.
               Kami hadir untuk teman berbulu Anda.
@@ -36,7 +36,7 @@ const HeroSection = () => {
               <button className="bg-[#658C58] text-white px-8 py-4 rounded-xl hover:bg-[#31694E] transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1">
                 Booking Sekarang
               </button>
-              <button className="border-2 border-[#BBC863] text-[#658C58] px-8 py-4 rounded-xl hover:bg-[#F0E491]/20 transition-all duration-300 font-semibold text-lg">
+              <button className="border-2 border-[#BBC863] text-white px-8 py-4 rounded-xl hover:bg-[#F0E491]/20 transition-all duration-300 font-semibold text-lg">
                 Lihat Layanan
               </button>
             </div>
@@ -48,21 +48,21 @@ const HeroSection = () => {
                   <div className="w-3 h-3 rounded-full bg-[#BBC863]"></div>
                   <span className="text-2xl font-bold text-[#31694E]">5,000+</span>
                 </div>
-                <p className="text-gray-600">Hewan Terlayani</p>
+                <p className="text-gray-200">Hewan Terlayani</p>
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-[#658C58]"></div>
                   <span className="text-2xl font-bold text-[#31694E]">98%</span>
                 </div>
-                <p className="text-gray-600">Kepuasan Klien</p>
+                <p className="text-gray-200">Kepuasan Klien</p>
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-[#F0E491]"></div>
                   <span className="text-2xl font-bold text-[#31694E]">24/7</span>
                 </div>
-                <p className="text-gray-600">Layanan Darurat</p>
+                <p className="text-gray-200">Layanan Darurat</p>
               </div>
             </div>
           </div>

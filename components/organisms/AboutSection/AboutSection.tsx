@@ -37,6 +37,12 @@ const ClockIcon = () => (
   </svg>
 );
 
+const PawIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+  </svg>
+);
+
 interface AboutSectionProps {
   className?: string;
 }
@@ -52,25 +58,25 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
         icon: <HeartIcon />,
         title: 'Perawatan Penuh Kasih',
         description: 'Setiap hewan diperlakukan dengan kasih sayang dan perhatian penuh.',
-        iconColor: '#ef4444',
+        iconColor: '#658C58',
       },
       {
         icon: <ShieldIcon />,
         title: 'Profesional & Terpercaya',
         description: 'Staf bersertifikat dengan pengalaman bertahun-tahun.',
-        iconColor: '#3b82f6',
+        iconColor: '#31694E',
       },
       {
         icon: <UsersIcon />,
         title: 'Komunitas Pecinta Hewan',
         description: 'Bergabung dengan ribuan pecinta hewan yang percaya pada kami.',
-        iconColor: '#10b981',
+        iconColor: '#BBC863',
       },
       {
         icon: <AwardIcon />,
         title: 'Penghargaan & Pengakuan',
         description: 'Diakui sebagai penyedia layanan hewan terbaik.',
-        iconColor: '#f59e0b',
+        iconColor: '#F0E491',
       },
     ];
 
@@ -102,7 +108,7 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
     // Stats data
     const stats = [
       {
-        icon: <HeartIcon />,
+        icon: <PawIcon />,
         value: '5,000+',
         label: 'Hewan Terlayani',
         description: 'Hewan peliharaan bahagia',
@@ -130,29 +136,45 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
     return (
       <section
         ref={ref}
-        className={cn('py-16 md:py-24 bg-gradient-to-r from-blue-50 to-cyan-50', className)}
+        className={cn('relative w-full overflow-hidden py-16 md:py-24', className)}
         {...props}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background dengan gradient dari palette - SAMA SEPERTI HERO */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F0E491]/20 via-[#BBC863]/10 to-[#658C58]/5"></div>
+        
+        {/* Decorative elements - SAMA SEPERTI HERO */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#F0E491]/10 rounded-full -translate-y-32 translate-x-32"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#31694E]/5 rounded-full translate-y-48 -translate-x-48"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header Section */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-block mb-4">
-              <span className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+            <div className="inline-block mb-6">
+              <span className="inline-flex items-center gap-2 bg-[#F0E491] text-[#31694E] px-4 py-2 rounded-full text-sm font-semibold">
                 Tentang Kami
               </span>
             </div>
             <H1 className="mb-6">
-              <span className="text-blue-600">Merawat</span> dengan{' '}
-              <span className="text-blue-600">Kasih Sayang</span>
+              <span className="text-[#31694E]">Merawat</span> dengan{' '}
+              <span className="text-[#658C58]">Kasih Sayang</span>
             </H1>
-            <Lead className="text-gray-600 mb-8">
+            <Lead className="text-gray-200 mb-8">
               Sejak 2010, Care Pet telah menjadi rumah kedua untuk ribuan hewan peliharaan. 
               Kami percaya setiap hewan layak mendapatkan perawatan terbaik dengan kasih sayang penuh.
             </Lead>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg">Jadwalkan Konsultasi</Button>
-              <Button variant="outline" size="lg">
+              <Button 
+                size="lg"
+                className="bg-[#658C58] text-white hover:bg-[#31694E] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                Jadwalkan Konsultasi
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-2 border-[#BBC863] text-white hover:bg-[#F0E491]/20 transition-all duration-300"
+              >
                 Lihat Galeri
               </Button>
             </div>
@@ -161,21 +183,27 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
           {/* Stats Section */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <StatsCard key={index} {...stat} />
+              <div key={index}>
+                <StatsCard {...stat} />
+              </div>
             ))}
           </div>
 
           {/* Features Section */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <H2 className="mb-4">Mengapa Memilih Kami?</H2>
-              <P className="text-gray-600 max-w-2xl mx-auto">
+              <H2 className="mb-4 text-[#31694E]">
+                Mengapa Memilih Kami?
+              </H2>
+              <P className="text-gray-200 max-w-2xl mx-auto">
                 Kombinasi keahlian profesional dan kasih sayang tulus membuat kami berbeda
               </P>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <FeatureItem key={index} {...feature} />
+                <div key={index}>
+                  <FeatureItem {...feature} />
+                </div>
               ))}
             </div>
           </div>
@@ -184,8 +212,10 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div className="space-y-6">
               <div>
-                <H3 className="mb-4 text-blue-600">Misi Kami</H3>
-                <P className="text-gray-600">
+                <H3 className="mb-4 text-[#658C58]">
+                  Misi Kami
+                </H3>
+                <P className="text-gray-200">
                   Memberikan layanan perawatan hewan terbaik dengan standar profesional 
                   tertinggi, memastikan setiap hewan peliharaan mendapatkan perawatan 
                   yang mereka butuhkan untuk hidup sehat dan bahagia.
@@ -199,8 +229,8 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
                   'Harga transparan',
                 ].map((item, index) => (
                   <li key={index} className="flex items-center">
-                    <div className="h-2 w-2 bg-blue-600 rounded-full mr-3"></div>
-                    <span className="text-gray-700">{item}</span>
+                    <div className="h-2 w-2 rounded-full bg-[#BBC863] mr-3"></div>
+                    <span className="text-gray-200">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -208,25 +238,39 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
             
             <div className="space-y-6">
               <div>
-                <H3 className="mb-4 text-blue-600">Visi Kami</H3>
-                <P className="text-gray-600">
+                <H3 className="mb-4 text-[#658C58]">
+                  Visi Kami
+                </H3>
+                <P className="text-gray-200">
                   Menjadi pusat perawatan hewan terdepan di Indonesia yang diakui 
                   secara internasional, menciptakan komunitas pecinta hewan yang 
                   peduli dan berpengetahuan.
                 </P>
               </div>
-              <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-                <blockquote className="italic text-gray-700 mb-4">
+              <div 
+                className="rounded-xl p-6 border border-[#F0E491]"
+                style={{ backgroundColor: 'rgba(240, 228, 145, 0.1)' }}
+              >
+                <blockquote 
+                  className="italic mb-4 text-gray-200"
+                >
                   Hewan bukan hanya peliharaan, mereka adalah keluarga. 
                   Perawatan mereka adalah komitmen seumur hidup.
                 </blockquote>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                    <UsersIcon />
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center mr-3"
+                    style={{ backgroundColor: '#F0E491' }}
+                  >
+                    <UsersIcon style={{ color: '#31694E' }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Care Pet Team</p>
-                    <p className="text-sm text-gray-600">Founding Principle</p>
+                    <p 
+                      className="font-semibold text-gray-200"
+                    >
+                      Care Pet Team
+                    </p>
+                    <p className="text-sm text-gray-400">Founding Principle</p>
                   </div>
                 </div>
               </div>
@@ -236,40 +280,57 @@ const AboutSection = React.forwardRef<HTMLDivElement, AboutSectionProps>(
           {/* Team Section */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <H2 className="mb-4">Tim Profesional Kami</H2>
-              <P className="text-gray-600 max-w-2xl mx-auto">
+              <H2 className="mb-4 text-[#31694E]">
+                Tim Profesional Kami
+              </H2>
+              <P className="text-gray-200 max-w-2xl mx-auto">
                 Bertemu dengan tim ahli yang siap merawat hewan kesayangan Anda
               </P>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((member, index) => (
-                <TeamCard key={index} {...member} />
+                <div key={index}>
+                  <TeamCard {...member} />
+                </div>
               ))}
             </div>
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-200 to-cyan-600 rounded-2xl p-8 md:p-12 text-center text-white">
-            <H2 className="mb-4">Siap Merawat Hewan Kesayangan Anda?</H2>
-            <P className="mb-8 max-w-2xl mx-auto opacity-90">
-              Bergabung dengan keluarga Care Pet dan dapatkan konsultasi gratis 
-              untuk pertama kalinya
-            </P>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                variant="secondary" 
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100"
-              >
-                Booking Sekarang
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-white text-white hover:bg-white/10"
-              >
-                Hubungi Kami
-              </Button>
+          <div 
+            className="rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden"
+            style={{ 
+              background: `linear-gradient(135deg, #658C58 0%, #31694E 100%)`
+            }}
+          >
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-white"></div>
+              <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-white"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <H2 className="mb-4">Siap Merawat Hewan Kesayangan Anda?</H2>
+              <P className="mb-8 max-w-2xl mx-auto opacity-90">
+                Bergabung dengan keluarga Care Pet dan dapatkan konsultasi gratis 
+                untuk pertama kalinya
+              </P>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  variant="secondary" 
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-[#31694E]"
+                >
+                  Booking Sekarang
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-white text-white hover:bg-white/10"
+                >
+                  Hubungi Kami
+                </Button>
+              </div>
             </div>
           </div>
 
