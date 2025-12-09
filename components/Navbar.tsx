@@ -9,10 +9,10 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Beranda', href: '/' },
-    { name: 'Layanan', href: '/services' },
-    { name: 'Booking', href: '/booking' },
-    { name: 'Tentang Kami', href: '/about' },
+    { name: 'Tentang Kami', href: '/#about' },
+    { name: 'Layanan', href: '/#services' },
     { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Hubungi Kami', href: '/#footer' },
   ];
 
   return (
@@ -37,7 +37,7 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="bg-[#658C58] text-white px-6 py-2 rounded-full hover:bg-[#557A47] transition-colors">
+            <button className="bg-[#F0E491] text-[#31694E] px-6 py-2 rounded-full hover:bg-[#557A47] hover:text-white transition-colors">
               Login
             </button>
           </div>

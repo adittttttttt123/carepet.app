@@ -168,7 +168,7 @@ const ServicesSection = React.forwardRef<HTMLDivElement, ServicesSectionProps>(
         {...props}
       >
         {/* Background dengan gradient - SAMA DENGAN SECTION LAIN */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#F0E491]/20 via-[#BBC863]/10 to-[#658C58]/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F0E491]/20 via-[#BBC863]/10 to-[#658C58]/5" id="services"></div>
         
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#F0E491]/10 rounded-full -translate-y-32 translate-x-32"></div>
