@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { PawPrint, Menu, X } from 'lucide-react';
+import { PawPrint, Menu, X, Shield } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,9 +37,19 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="bg-[#F0E491] text-[#31694E] px-6 py-2 rounded-full hover:bg-[#557A47] hover:text-white transition-colors">
+            <Link
+              href="/login"
+              className="bg-[#F0E491] text-[#31694E] px-6 py-2 rounded-full hover:bg-[#557A47] hover:text-white transition-colors font-medium"
+            >
               Login
-            </button>
+            </Link>
+            <Link
+              href="/admin/login"
+              className="flex items-center gap-1 text-white/70 hover:text-white transition-colors text-sm"
+              title="Admin Portal"
+            >
+              <Shield className="h-4 w-4" />
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -64,9 +74,21 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <button className="w-full mt-4 bg-[#658C58] text-white px-6 py-2 rounded-full hover:bg-[#557A47] transition-colors">
+              <Link
+                href="/login"
+                className="block w-full mt-4 bg-[#658C58] text-white px-6 py-2 rounded-full hover:bg-[#557A47] transition-colors text-center"
+                onClick={() => setIsOpen(false)}
+              >
                 Login
-              </button>
+              </Link>
+              <Link
+                href="/admin/login"
+                className="flex items-center justify-center gap-2 w-full mt-2 text-white/70 hover:text-white transition-colors text-sm py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                <Shield className="h-4 w-4" />
+                <span>Admin Portal</span>
+              </Link>
             </div>
           </div>
         )}

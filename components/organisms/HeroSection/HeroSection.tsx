@@ -1,15 +1,16 @@
 import { Shield, Heart, PawPrint } from 'lucide-react';
+import Link from 'next/link';
 
 const HeroSection = () => {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background dengan gradient dari palette */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#F0E491]/20 via-[#BBC863]/10 to-[#658C58]/5"></div>
-      
+
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#F0E491]/10 rounded-full -translate-y-32 translate-x-32"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#31694E]/5 rounded-full translate-y-48 -translate-x-48"></div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -19,28 +20,34 @@ const HeroSection = () => {
               <PawPrint className="h-4 w-4" />
               <span className="text-sm font-semibold">#1 Pet Care di Indonesia</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               <span className="text-[#31694E]">Perawatan</span>{' '}
               <span className="text-[#658C58]">Hewan</span>{' '}
               <span className="text-[#BBC863]">Terbaik</span>
             </h1>
-            
+
             <p className="text-lg text-gray-200 mb-8">
               Layanan grooming, kesehatan, dan penitipan hewan profesional dengan{' '}
               <span className="text-[#658C58] font-semibold">perhatian penuh kasih sayang</span>.
               Kami hadir untuk teman berbulu Anda.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="bg-[#658C58] text-white px-8 py-4 rounded-xl hover:bg-[#31694E] transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1">
+              <Link
+                href="/login"
+                className="bg-[#658C58] text-white px-8 py-4 rounded-xl hover:bg-[#31694E] transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 text-center"
+              >
                 Booking Sekarang
-              </button>
-              <button className="border-2 border-[#BBC863] text-white px-8 py-4 rounded-xl hover:bg-[#F0E491]/20 transition-all duration-300 font-semibold text-lg">
+              </Link>
+              <Link
+                href="/#services"
+                className="border-2 border-[#BBC863] text-white px-8 py-4 rounded-xl hover:bg-[#F0E491]/20 transition-all duration-300 font-semibold text-lg text-center"
+              >
                 Lihat Layanan
-              </button>
+              </Link>
             </div>
-            
+
             {/* Stats */}
             <div className="flex flex-wrap gap-8">
               <div>
@@ -66,7 +73,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Right Content - Hero Image */}
           <div className="relative">
             {/* Main Image Container */}
@@ -78,7 +85,7 @@ const HeroSection = () => {
                   <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-[#F0E491]"></div>
                   <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-[#F0E491]"></div>
                 </div>
-                
+
                 {/* Hero Content */}
                 <div className="relative text-center text-white p-8">
                   <div className="mb-6">
@@ -89,7 +96,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Floating Card 1 */}
             <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-xl max-w-xs">
               <div className="flex items-center gap-4">
@@ -102,7 +109,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Floating Card 2 */}
             <div className="absolute -top-4 -right-4 bg-white p-4 rounded-2xl shadow-xl max-w-xs">
               <div className="flex items-center gap-4">
@@ -117,7 +124,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Decorative Dots */}
             <div className="absolute -bottom-6 right-10 flex gap-2">
               {[1, 2, 3].map((dot) => (
