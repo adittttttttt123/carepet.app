@@ -34,6 +34,31 @@ const menuItems = [
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const [notifMenuOpen, setNotifMenuOpen] = useState(false);
+
+    const notifications = [
+        {
+            id: '1',
+            title: 'Mochi sudah diberi makan',
+            message: 'Pengasuh baru saja memberi makan Mochi',
+            time: '5 menit lalu',
+            read: false,
+        },
+        {
+            id: '2',
+            title: 'Pembayaran berhasil',
+            message: 'Pembayaran untuk grooming Bruno berhasil',
+            time: '1 jam lalu',
+            read: false,
+        },
+        {
+            id: '3',
+            title: 'Jadwal vaksinasi',
+            message: 'Pengingat: Vaksinasi Mochi besok pukul 10:00',
+            time: '2 jam lalu',
+            read: true,
+        },
+    ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#F0E491]/20 via-[#BBC863]/10 to-[#658C58]/5 ">
@@ -46,9 +71,9 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                             <div className="bg-gradient-to-br from-[#658C58] to-[#31694E] p-2 rounded-xl text-white shadow-lg">
                                 <PawPrint size={24} />
                             </div>
-                            <div className="hidden sm:block">
-                                <span className="text-lg font-bold text-gray-800">Care Pet</span>
-                                <p className="text-xs text-gray-500 -mt-1">Dashboard</p>
+                            <div>
+                                <span className="text-base sm:text-lg font-bold text-gray-800">Care Pet</span>
+                                <p className="text-xs text-gray-500 -mt-1 hidden sm:block">Dashboard</p>
                             </div>
                         </Link>
 
@@ -69,10 +94,51 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                         {/* Right Section */}
                         <div className="flex items-center gap-2 sm:gap-4">
                             {/* Notifications */}
-                            <button className="relative p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                                <Bell size={20} className="text-gray-600" />
-                                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                            </button>
+                            <div className="relative">
+                                <button
+                                    onClick={() => setNotifMenuOpen(!notifMenuOpen)}
+                                    className="relative p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                                >
+                                    <Bell size={20} className="text-gray-600" />
+                                    <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                                </button>
+
+                                {notifMenuOpen && (
+                                    <>
+                                        <div className="fixed inset-0 z-40" onClick={() => setNotifMenuOpen(false)} />
+                                        <div className="absolute right-0 top-12 w-80 sm:w-96 bg-white rounded-xl shadow-xl border border-gray-100 z-50 overflow-hidden">
+                                            <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-[#658C58]/10 to-[#BBC863]/10">
+                                                <h3 className="font-bold text-gray-800">Notifikasi</h3>
+                                                <span className="text-xs bg-[#658C58] text-white px-2 py-0.5 rounded-full">
+                                                    {notifications.filter(n => !n.read).length} baru
+                                                </span>
+                                            </div>
+                                            <div className="max-h-80 overflow-y-auto">
+                                                {notifications.map((notif) => (
+                                                    <div
+                                                        key={notif.id}
+                                                        className={`px-4 py-3 border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors ${!notif.read ? 'bg-[#F0E491]/10' : ''}`}
+                                                    >
+                                                        <div className="flex items-start gap-3">
+                                                            <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${!notif.read ? 'bg-[#658C58]' : 'bg-gray-300'}`} />
+                                                            <div className="flex-1 min-w-0">
+                                                                <p className="font-semibold text-gray-800 text-sm">{notif.title}</p>
+                                                                <p className="text-xs text-gray-600 truncate">{notif.message}</p>
+                                                                <p className="text-xs text-gray-400 mt-1">{notif.time}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="px-4 py-3 border-t border-gray-100">
+                                                <button className="w-full text-center text-sm text-[#658C58] font-medium hover:underline">
+                                                    Lihat semua notifikasi
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
 
                             {/* User Menu - Desktop */}
                             <div className="hidden sm:block relative">
@@ -110,7 +176,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                             {/* Mobile Menu Button */}
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-800"
                             >
                                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                             </button>
