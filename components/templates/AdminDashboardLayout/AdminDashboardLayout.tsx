@@ -25,10 +25,10 @@ interface AdminDashboardLayoutProps {
 
 const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', href: '/admin/dashboard' },
-    { icon: Dog, label: 'Kelola Hewan', href: '/admin/pets' },
-    { icon: Home, label: 'Kelola Penitipan', href: '/admin/boarding' },
-    { icon: ShoppingCart, label: 'Kelola Layanan', href: '/admin/services' },
-    { icon: CreditCard, label: 'Kelola Pembayaran', href: '/admin/payments' },
+    { icon: Dog, label: 'Hewan', href: '/admin/pets' },
+    { icon: Home, label: 'Penitipan', href: '/admin/boarding' },
+    { icon: ShoppingCart, label: 'Layanan', href: '/admin/services' },
+    { icon: CreditCard, label: 'Pembayaran', href: '/admin/payments' },
     { icon: FileText, label: 'Laporan', href: '/admin/reports' },
     { icon: Settings, label: 'Pengaturan', href: '/admin/settings' },
 ];
