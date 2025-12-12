@@ -43,7 +43,7 @@ const StatsCard = React.forwardRef<HTMLDivElement, StatsCardProps>(
             >
               {icon}
             </div>
-            
+
             {/* Value & Label */}
             <div className="space-y-1">
               <H2 className="text-3xl font-bold text-[#F0E491]">
@@ -53,7 +53,7 @@ const StatsCard = React.forwardRef<HTMLDivElement, StatsCardProps>(
                 {label}
               </P>
             </div>
-            
+
             {/* Description */}
             {description && (
               <Lead className="text-white opacity-80">
@@ -70,3 +70,4 @@ const StatsCard = React.forwardRef<HTMLDivElement, StatsCardProps>(
 StatsCard.displayName = 'StatsCard';
 
 export { StatsCard };
+export type { StatsCardProps };

@@ -15,7 +15,7 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       warning: 'bg-yellow-100 text-yellow-800',
       danger: 'bg-red-100 text-red-800',
     };
-    
+
     return (
       <div
         ref={ref}
@@ -36,3 +36,4 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
 Badge.displayName = 'Badge';
 
 export { Badge };
+export type { BadgeProps };

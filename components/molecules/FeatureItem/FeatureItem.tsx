@@ -68,3 +68,4 @@ const FeatureItem = React.forwardRef<HTMLDivElement, FeatureItemProps>(
 FeatureItem.displayName = 'FeatureItem';
 
 export { FeatureItem };
+export type { FeatureItemProps };

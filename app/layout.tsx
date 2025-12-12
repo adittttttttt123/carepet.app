@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/Navbar';
 import { Footer } from '@/components/organisms/Footer/Footer';
+import { headers } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,17 +12,23 @@ export const metadata: Metadata = {
   description: 'Layanan perawatan hewan peliharaan terpercaya',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const pathname = headersList.get('x-pathname') || '';
+
+  // Pages that should not have the main navbar/footer
+  const hideNavbar = pathname.startsWith('/dashboard') || pathname.startsWith('/admin');
+
   return (
     <html lang="id">
-      <body className={`${inter.className} bg-gray-50`}>
-        <Navbar />
-        <main className="min-h-screen pt-16">{children}</main>
-        <Footer />
+      <body className={`${inter.className} bg-gray-900`}>
+        {!hideNavbar && <Navbar />}
+        <main className={!hideNavbar ? "min-h-screen pt-16" : ""}>{children}</main>
+        {!hideNavbar && <Footer />}
       </body>
     </html>
   );

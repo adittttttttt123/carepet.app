@@ -14,7 +14,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       md: 'shadow-md',
       lg: 'shadow-lg',
     }[shadow];
-    
+
     return (
       <div
         ref={ref}
@@ -103,3 +103,4 @@ export {
   CardDescription,
   CardContent,
 };
+export type { CardProps };
