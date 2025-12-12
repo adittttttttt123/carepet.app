@@ -36,13 +36,13 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]">
+        <div className="min-h-screen bg-gradient-to-br from-[#F0E491]/20 via-[#BBC863]/10 to-[#658C58]/5 ">
             {/* Top Navbar - Fixed */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2 sm:gap-3">
+                        <Link href="/dashboard" className="flex items-center gap-2 sm:gap-3">
                             <div className="bg-gradient-to-br from-[#658C58] to-[#31694E] p-2 rounded-xl text-white shadow-lg">
                                 <PawPrint size={24} />
                             </div>
