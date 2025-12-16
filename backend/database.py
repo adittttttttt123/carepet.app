@@ -4,7 +4,7 @@ from mysql.connector import Error
 db_config = {
     'host': 'localhost',
     'database': 'carepet',
-    'user': 'root',  # Default XAMPP/local userr
+    'user': 'root',  # Default XAMPP/local user
     'password': '',  # Default XAMPP password (empty)
     'raise_on_warnings': True
 }

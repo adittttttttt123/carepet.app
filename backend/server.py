@@ -1,6 +1,6 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler # Use SimpleHTTPRequestHandler for static files
 import json
-import cgi
+
 from urllib.parse import urlparse, parse_qs
 import os
 import sys
