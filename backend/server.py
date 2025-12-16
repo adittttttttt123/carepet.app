@@ -9,7 +9,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Placeholders for handlers (will be implemented next)
-from handlers import auth, pets #, users
+from handlers import auth, pets, services, bookings
 
 class RequestHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -66,9 +66,13 @@ class RequestHandler(SimpleHTTPRequestHandler):
             if path == '/api/health':
                  response_data = {"status": "ok"}
             elif path == '/api/pets':
-                # Extract token from Authorization header or cookie (simplified: expect Header)
                 token = self.headers.get('Authorization', '').replace('Bearer ', '')
                 response_data, status = pets.get_all_pets(token)
+            elif path == '/api/services':
+                response_data, status = services.get_all_services()
+            elif path == '/api/bookings':
+                token = self.headers.get('Authorization', '').replace('Bearer ', '')
+                response_data, status = bookings.get_user_bookings(token)
             else:
                 status = 404
                 response_data = {"error": "Endpoint not found"}
@@ -94,6 +98,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
             elif path == '/api/pets':
                 token = self.headers.get('Authorization', '').replace('Bearer ', '')
                 response_data, status = pets.create_pet(data, token)
+            elif path == '/api/bookings':
+                token = self.headers.get('Authorization', '').replace('Bearer ', '')
+                response_data, status = bookings.create_booking(data, token)
             else:
                 status = 404
                 response_data = {"error": "Endpoint not found"}
