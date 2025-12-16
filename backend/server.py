@@ -88,6 +88,9 @@ class RequestHandler(SimpleHTTPRequestHandler):
                 response_data, status = auth.login(data)
             elif path == '/api/register':
                 response_data, status = auth.register(data)
+            elif path == '/api/logout':
+                token = self.headers.get('Authorization', '').replace('Bearer ', '')
+                response_data, status = auth.logout(token)
             elif path == '/api/pets':
                 token = self.headers.get('Authorization', '').replace('Bearer ', '')
                 response_data, status = pets.create_pet(data, token)

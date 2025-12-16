@@ -1,5 +1,5 @@
 import uuid
-from database import execute_query, fetch_all, fetch_one
+from database import db
 from handlers.auth import get_current_user
 
 def get_all_pets(token):
@@ -8,7 +8,7 @@ def get_all_pets(token):
         return {"error": "Unauthorized"}, 401
     
     query = "SELECT * FROM hewan WHERE id_pengguna = %s"
-    pets = fetch_all(query, (user['id_pengguna'],))
+    pets = db.fetch_all(query, (user['id_pengguna'],))
     return pets, 200
 
 def create_pet(data, token):
@@ -32,7 +32,7 @@ def create_pet(data, token):
     """
     params = (id_hewan, user['id_pengguna'], nama, jenis, usia, kebutuhan)
     
-    result = execute_query(query, params)
+    result = db.execute(query, params)
     
     if result is not None:
         return {"message": "Pet created", "id": id_hewan}, 201

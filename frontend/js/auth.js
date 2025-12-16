@@ -56,10 +56,22 @@ const auth = {
         return data;
     },
 
-    logout() {
-        localStorage.removeItem('carepet_token');
-        localStorage.removeItem('carepet_user');
-        window.location.href = '/login.html';
+    async logout() {
+        try {
+            const token = localStorage.getItem('carepet_token');
+            if (token) {
+                await fetch(`${API_BASE}/logout`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+            }
+        } catch (e) {
+            console.error('Logout error:', e);
+        } finally {
+            localStorage.removeItem('carepet_token');
+            localStorage.removeItem('carepet_user');
+            window.location.href = '/login.html';
+        }
     },
 
     getUser() {

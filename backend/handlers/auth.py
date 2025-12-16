@@ -2,7 +2,7 @@ import hashlib
 import os
 import uuid
 import datetime
-from database import execute_query, fetch_one
+from database import db
 
 def hash_password(password):
     """Hash a password using PBKDF2 with a random salt."""
@@ -44,7 +44,7 @@ def register(data):
         return {"error": "Missing required fields"}, 400
 
     # check if email exists
-    existing = fetch_one("SELECT id_pengguna FROM pengguna WHERE email = %s", (email,))
+    existing = db.fetch_one("SELECT id_pengguna FROM pengguna WHERE email = %s", (email,))
     if existing:
         return {"error": "Email already registered"}, 409
 
@@ -58,7 +58,7 @@ def register(data):
     """
     params = (id_pengguna, nama, email, hashed, no_hp, alamat)
     
-    result = execute_query(query, params)
+    result = db.execute(query, params)
     
     if result is not None: # Insert successful
         return {"message": "Registration successful", "redirect": "/login"}, 201
@@ -72,7 +72,7 @@ def login(data):
     if not email or not password:
         return {"error": "Missing credentials"}, 400
 
-    user = fetch_one("SELECT * FROM pengguna WHERE email = %s", (email,))
+    user = db.fetch_one("SELECT * FROM pengguna WHERE email = %s", (email,))
     
     if not user or not verify_password(user['password'], password):
         return {"error": "Invalid email or password"}, 401
@@ -81,7 +81,7 @@ def login(data):
     session_id = str(uuid.uuid4())
     # Expires in 24 hours
     expires_at = datetime.datetime.now() + datetime.timedelta(hours=24)
-    execute_query(
+    db.execute(
         "INSERT INTO sessions (session_id, user_id, expires_at) VALUES (%s, %s, %s)",
         (session_id, user['id_pengguna'], expires_at)
     )
@@ -98,12 +98,19 @@ def login(data):
 def get_current_user(token):
     if not token:
         return None
-    session = fetch_one(
+    session = db.fetch_one(
         "SELECT * FROM sessions WHERE session_id = %s AND expires_at > NOW()", 
         (token,)
     )
     if not session:
         return None
     
-    user = fetch_one("SELECT id_pengguna, nama_pengguna, email, no_hp, alamat FROM pengguna WHERE id_pengguna = %s", (session['user_id'],))
+    user = db.fetch_one("SELECT id_pengguna, nama_pengguna, email, no_hp, alamat FROM pengguna WHERE id_pengguna = %s", (session['user_id'],))
     return user
+
+def logout(token):
+    if not token:
+        return {"error": "Unauthorized"}, 401
+        
+    db.execute("DELETE FROM sessions WHERE session_id = %s", (token,))
+    return {"message": "Logged out successfully"}, 200
