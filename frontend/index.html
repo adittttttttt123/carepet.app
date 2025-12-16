@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePet - Solusi Terbaik untuk Hewan Peliharaan Anda</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="card" style="border-radius: 0; border-left: 0; border-right: 0; position: sticky; top: 0; z-index: 50;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem;">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">CarePet.</div>
+            <nav style="gap: 2rem; display: flex;">
+                <a href="/" style="color: white; font-weight: 500;">Beranda</a>
+                <a href="#layanan" style="color: var(--text-muted);">Layanan</a>
+                <a href="#tentang" style="color: var(--text-muted);">Tentang</a>
+            </nav>
+            <div style="gap: 1rem; display: flex;">
+                <a href="/login.html" class="btn" style="background: transparent; color: white;">Masuk</a>
+                <a href="/register.html" class="btn btn-primary">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container" style="padding: 5rem 1rem; text-align: center;">
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;">
+                Perawatan Terbaik untuk <br>
+                <span style="color: var(--primary); background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Sahabat Kecil Anda</span>
+            </h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem;">
+                Kami menyediakan layanan penitipan dan perawatan hewan peliharaan dengan fasilitas premium dan kasih sayang sepenuh hati.
+            </p>
+            <div class="flex-center" style="gap: 1rem;">
+                <a href="/register.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Mulai Sekarang</a>
+                <a href="#layanan" class="btn" style="background: var(--bg-card); padding: 1rem 2rem; font-size: 1.1rem;">Lihat Layanan</a>
+            </div>
+        </section>
+
+        <!-- Services Preview -->
+        <section id="layanan" class="container" style="padding: 4rem 1rem;">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Layanan Kami</h2>
+            <div class="grid-cols-2" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary);">Grooming</h3>
+                    <p style="color: var(--text-muted);">Layanan spa dan grooming lengkap untuk menjaga kebersihan dan penampilan hewan peliharaan Anda.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--secondary);">Penitipan (Boarding)</h3>
+                    <p style="color: var(--text-muted);">Hotel hewan yang nyaman, bersih, dan terpantau CCTV 24 jam dengan update harian.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #10b981;">Pemeriksaan Kesehatan</h3>
+                    <p style="color: var(--text-muted);">Pemeriksaan rutin oleh dokter hewan berpengalaman untuk memastikan kondisi prima.</p>
+                </div>
+                <!-- ... -->
+            </div>
+        </section>
+    </main>
+
+    <footer style="border-top: 1px solid var(--border-color); padding: 2rem 0; margin-top: 4rem; text-align: center; color: var(--text-muted);">
+        <div class="container">
+            <p>&copy; 2025 CarePet App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

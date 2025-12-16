@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - CarePet</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+
+    <div class="card" style="width: 100%; max-width: 500px;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">CarePet.</h1>
+            <p style="color: var(--text-muted);">Buat akun baru</p>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label class="form-label">Nama Lengkap</label>
+                <input type="text" id="nama" class="form-input" placeholder="Budi Santoso" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="email" class="form-input" placeholder="nama@email.com" required>
+            </div>
+
+            <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1.25rem;">
+                <div>
+                    <label class="form-label">No. HP</label>
+                    <input type="tel" id="no_hp" class="form-input" placeholder="0812..." required>
+                </div>
+                <div>
+                    <label class="form-label">Alamat</label>
+                    <input type="text" id="alamat" class="form-input" placeholder="Jl. Mawar No. 1" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" id="password" class="form-input" placeholder="******" required>
+            </div>
+
+            <div id="errorMsg" style="color: #ef4444; font-size: 0.875rem; margin-bottom: 1rem; display: none;"></div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Daftar</button>
+        </form>
+
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+            Sudah punya akun? <a href="/login.html" style="color: var(--primary);">Masuk disini</a>
+        </p>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const no_hp = document.getElementById('no_hp').value;
+            const alamat = document.getElementById('alamat').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('errorMsg');
+
+            try {
+                errorDiv.style.display = 'none';
+                await auth.register({ nama, email, no_hp, alamat, password });
+                // Auto login or redirect to login
+                window.location.href = '/login.html';
+            } catch (err) {
+                errorDiv.textContent = err.message;
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
