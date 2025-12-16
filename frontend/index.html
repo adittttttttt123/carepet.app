@@ -1,70 +1,132 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarePet - Solusi Terbaik untuk Hewan Peliharaan Anda</title>
+    <title>CarePet - Solusi Premium Hewan Kesayangan</title>
     <link rel="stylesheet" href="/css/style.css">
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+    </style>
 </head>
-<body>
-    <header class="card" style="border-radius: 0; border-left: 0; border-right: 0; position: sticky; top: 0; z-index: 50;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem;">
-            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">CarePet.</div>
-            <nav style="gap: 2rem; display: flex;">
-                <a href="/" style="color: white; font-weight: 500;">Beranda</a>
-                <a href="#layanan" style="color: var(--text-muted);">Layanan</a>
-                <a href="#tentang" style="color: var(--text-muted);">Tentang</a>
+
+<body style="overflow-x: hidden;">
+    <div class="hero-glow"></div>
+
+    <!-- Navbar -->
+    <header
+        style="position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="container"
+            style="max-width: 1200px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <div
+                style="display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.5rem; color: var(--text-main);">
+                <div style="background: var(--primary); padding: 4px; border-radius: 8px;"><i data-lucide="paw-print"
+                        size="20" color="white"></i></div>
+                CarePet.
+            </div>
+
+            <nav style="display: flex; gap: 2.5rem;" class="md:grid-cols-2">
+                <!-- Hidden on mobile in real scenario, simplified here -->
+                <a href="#" class="nav-link">Beranda</a>
+                <a href="#features" class="nav-link">Fitur</a>
+                <a href="#services" class="nav-link">Layanan</a>
             </nav>
-            <div style="gap: 1rem; display: flex;">
-                <a href="/login.html" class="btn" style="background: transparent; color: white;">Masuk</a>
-                <a href="/register.html" class="btn btn-primary">Daftar</a>
+
+            <div style="display: flex; gap: 1rem;">
+                <a href="/login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Masuk</a>
+                <a href="/register.html" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Daftar</a>
             </div>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="container" style="padding: 5rem 1rem; text-align: center;">
-            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;">
-                Perawatan Terbaik untuk <br>
-                <span style="color: var(--primary); background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Sahabat Kecil Anda</span>
+        <section style="padding: 6rem 1rem; text-align: center; position: relative;">
+            <span
+                style="display: inline-block; padding: 0.35rem 1rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(99,102,241,0.2);">
+                ✨ Solusi Terbaik untuk Anabul
+            </span>
+            <h1
+                style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                Perawatan Premium Sepenuh Hati<br>Untuk Sahabat Kecil Anda
             </h1>
-            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem;">
-                Kami menyediakan layanan penitipan dan perawatan hewan peliharaan dengan fasilitas premium dan kasih sayang sepenuh hati.
+            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 3rem; color: var(--text-muted);">
+                Platform manajemen hewan peliharaan no #1. Pantau kesehatan, booking perawatan, dan kelola kebutuhan
+                hewan peliharaan Anda dalam satu aplikasi.
             </p>
-            <div class="flex-center" style="gap: 1rem;">
-                <a href="/register.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Mulai Sekarang</a>
-                <a href="#layanan" class="btn" style="background: var(--bg-card); padding: 1rem 2rem; font-size: 1.1rem;">Lihat Layanan</a>
+            <div class="flex justify-center gap-4">
+                <a href="/register.html" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Mulai
+                    Sekarang →</a>
+                <a href="#features" class="btn btn-outline" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Pelajari
+                    Lebih Lanjut</a>
+            </div>
+
+            <!-- Stats/Trust -->
+            <div style="margin-top: 5rem; display: flex; justify-content: center; gap: 4rem; opacity: 0.7;">
+                <div>
+                    <h3 style="margin: 0; font-size: 2rem;">2k+</h3>
+                    <p style="font-size: 0.9rem;">Pengguna Aktif</p>
+                </div>
+                <div>
+                    <h3 style="margin: 0; font-size: 2rem;">5k+</h3>
+                    <p style="font-size: 0.9rem;">Hewan Terdaftar</p>
+                </div>
+                <div>
+                    <h3 style="margin: 0; font-size: 2rem;">99%</h3>
+                    <p style="font-size: 0.9rem;">Kepuasan</p>
+                </div>
             </div>
         </section>
 
-        <!-- Services Preview -->
-        <section id="layanan" class="container" style="padding: 4rem 1rem;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Layanan Kami</h2>
-            <div class="grid-cols-2" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="card">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary);">Grooming</h3>
-                    <p style="color: var(--text-muted);">Layanan spa dan grooming lengkap untuk menjaga kebersihan dan penampilan hewan peliharaan Anda.</p>
+        <!-- Features Grid -->
+        <section id="features" style="padding: 4rem 1rem; max-width: 1200px; margin: 0 auto;">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card glass animate-fade">
+                    <div
+                        style="background: rgba(99,102,241,0.1); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <i data-lucide="calendar-check" color="var(--primary)"></i>
+                    </div>
+                    <h2>Booking Mudah</h2>
+                    <p>Reservasi layanan grooming dan penitipan hanya dalam beberapa klik, tanpa antri dan ribet.</p>
                 </div>
-                <div class="card">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--secondary);">Penitipan (Boarding)</h3>
-                    <p style="color: var(--text-muted);">Hotel hewan yang nyaman, bersih, dan terpantau CCTV 24 jam dengan update harian.</p>
+                <div class="card glass animate-fade" style="transition-delay: 100ms;">
+                    <div
+                        style="background: rgba(236,72,153,0.1); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <i data-lucide="heart-pulse" color="var(--secondary)"></i>
+                    </div>
+                    <h2>Pantau Kesehatan</h2>
+                    <p>Catat dan pantau riwayat medis, vaksinasi, dan perkembangan berat badan hewan kesayangan Anda.
+                    </p>
                 </div>
-                <div class="card">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #10b981;">Pemeriksaan Kesehatan</h3>
-                    <p style="color: var(--text-muted);">Pemeriksaan rutin oleh dokter hewan berpengalaman untuk memastikan kondisi prima.</p>
-                </div>
-                <!-- ... -->
+                <!-- More items could go here -->
             </div>
         </section>
     </main>
 
-    <footer style="border-top: 1px solid var(--border-color); padding: 2rem 0; margin-top: 4rem; text-align: center; color: var(--text-muted);">
-        <div class="container">
-            <p>&copy; 2025 CarePet App. All rights reserved.</p>
-        </div>
-    </footer>
+    <script>lucide.createIcons();</script>
 </body>
+
 </html>

@@ -6,60 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Hewan - CarePet</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+<body
+    style="background: radial-gradient(circle at bottom, #1e1e24 0%, #0f172a 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
 
-    <div class="card" style="width: 100%; max-width: 500px;">
-        <div style="display: flex; align-items: center; margin-bottom: 2rem; gap: 1rem;">
-            <a href="/dashboard.html" class="btn" style="background: var(--bg-dark); padding: 0.5rem;">←</a>
-            <h1 style="font-size: 1.5rem; color: white; margin: 0;">Tambah Hewan Peliharaan</h1>
+    <div class="card animate-fade" style="width: 100%; max-width: 550px; padding: 0;">
+        <div
+            style="padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 1rem;">
+            <a href="/dashboard.html" class="btn btn-outline"
+                style="padding: 0.4rem; height: 32px; width: 32px; border-radius: 8px;">
+                <i data-lucide="arrow-left" size="18"></i>
+            </a>
+            <h2 style="margin: 0; font-size: 1.25rem;">Tambah Hewan Baru</h2>
         </div>
 
-        <form id="createPetForm">
-            <div class="form-group">
-                <label class="form-label">Nama Hewan</label>
-                <input type="text" id="nama_hewan" class="form-input" placeholder="Misal: Mochi" required>
-            </div>
-
-            <div class="grid-cols-2" style="gap: 1rem;">
-                <div class="form-group">
-                    <label class="form-label">Jenis</label>
-                    <select id="jenis" class="form-input" required>
-                        <option value="">Pilih Jenis</option>
-                        <option value="Kucing">Kucing</option>
-                        <option value="Anjing">Anjing</option>
-                        <option value="Kelinci">Kelinci</option>
-                        <option value="Lainnya">Lainnya</option>
-                    </select>
+        <div style="padding: 2rem;">
+            <form id="createPetForm">
+                <div class="input-group">
+                    <label class="label">Nama Hewan</label>
+                    <input type="text" id="nama_hewan" class="input" placeholder="Contoh: Mochi" required>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Usia (Tahun)</label>
-                    <input type="number" id="usia" class="form-input" placeholder="2" required min="0">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="input-group">
+                        <label class="label">Jenis</label>
+                        <select id="jenis" class="input" required style="cursor: pointer;">
+                            <option value="">Pilih Jenis...</option>
+                            <option value="Kucing">Kucing 🐱</option>
+                            <option value="Anjing">Anjing 🐶</option>
+                            <option value="Kelinci">Kelinci 🐰</option>
+                            <option value="Lainnya">Lainnya 🐾</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="label">Usia (Tahun)</label>
+                        <input type="number" id="usia" class="input" placeholder="0" min="0" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label class="form-label">Kebutuhan Khusus (Opsional)</label>
-                <textarea id="kebutuhan" class="form-input" placeholder="Misal: Alergi ayam" rows="3"></textarea>
-            </div>
+                <div class="input-group">
+                    <label class="label">Kebutuhan Khusus (Opsional)</label>
+                    <textarea id="kebutuhan" class="input" placeholder="Apakah ada alergi atau kebiasaan khusus?"
+                        rows="3" style="resize: none;"></textarea>
+                </div>
 
-            <div id="errorMsg" style="color: #ef4444; font-size: 0.875rem; margin-bottom: 1rem; display: none;"></div>
+                <div id="errorMsg"
+                    style="color: var(--danger); font-size: 0.875rem; margin-bottom: 1.5rem; display: none;"></div>
 
-            <div style="display: flex; gap: 1rem;">
-                <button type="button" onclick="window.location.href='/dashboard.html'" class="btn"
-                    style="background: var(--bg-dark); color: var(--text-muted); flex: 1;">Batal</button>
-                <button type="submit" class="btn btn-primary" style="flex: 1;">Simpan</button>
-            </div>
-        </form>
+                <div class="flex gap-4" style="margin-top: 2rem;">
+                    <a href="/dashboard.html" class="btn btn-outline w-full">Batal</a>
+                    <button type="submit" class="btn btn-primary w-full">Simpan Data</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="/js/auth.js"></script>
     <script>
-        // Auth Guard
-        if (!auth.getUser()) {
-            window.location.href = '/login.html';
-        }
+        lucide.createIcons();
+        if (!auth.getUser()) window.location.href = '/login.html';
 
         document.getElementById('createPetForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -71,24 +79,17 @@
 
             try {
                 errorDiv.style.display = 'none';
-                // Using auth.fetch to make authenticated request
                 const response = await auth.fetch('/pets', {
                     method: 'POST',
                     body: JSON.stringify({ nama_hewan, jenis, usia: parseInt(usia), kebutuhan_khusus })
                 });
 
-                // auth.fetch returns the JSON response, but doesn't throw on error status unless we handle it in auth.js
-                // In auth.js I only handled 401. If update failed (e.g. 500) it might return {error: ...}
-                // Let's check if response has 'id' or 'message'
-                if (response.error) {
-                    throw new Error(response.error);
-                }
-
+                if (response.error) throw new Error(response.error);
                 window.location.href = '/dashboard.html';
 
             } catch (err) {
                 console.error(err);
-                errorDiv.textContent = err.message || "Gagal menambah hewan.";
+                errorDiv.textContent = err.message || "Gagal menyimpan.";
                 errorDiv.style.display = 'block';
             }
         });

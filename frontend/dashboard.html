@@ -6,115 +6,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - CarePet</title>
     <link rel="stylesheet" href="/css/style.css">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header class="card" style="border-radius: 0; border: none; border-bottom: 1px solid var(--border-color);">
-        <div class="container"
-            style="display: flex; justify-content: space-between; align-items: center; padding: 1rem;">
-            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">CarePet.</div>
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <span id="userName" style="color: var(--text-main);">User</span>
-                <button onclick="auth.logout()" class="btn"
-                    style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 0.5rem 1rem;">Logout</button>
-            </div>
-        </div>
-    </header>
-
-    <main class="container" style="padding: 2rem 1rem;">
-        <h1 style="font-size: 2rem; margin-bottom: 2rem;">Dashboard</h1>
-
-        <!-- Stats/Status -->
-        <div class="card"
-            style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; margin-bottom: 2rem;">
-            <h2 style="color: white; margin-bottom: 0.5rem;">Selamat Datang!</h2>
-            <p style="color: rgba(255,255,255,0.9);">Kelola hewan peliharaan anda dengan mudah disini.</p>
-        </div>
-
-        <div class="grid-cols-2" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <!-- Pets List -->
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <h3>Hewan Peliharaan</h3>
-                    <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">+ Tambah</button>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div style="padding: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                <div
+                    style="background: var(--primary); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <i data-lucide="paw-print" color="white" size="18"></i>
                 </div>
-                <div id="petsList" style="display: flex; flex-direction: column; gap: 1rem;">
-                    <!-- Pets will be loaded here -->
-                    <p style="color: var(--text-muted); font-style: italic;">Memuat data...</p>
-                </div>
+                <span style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em;">CarePet.</span>
             </div>
 
-            <!-- Services -->
-            <div class="card">
-                <h3>Layanan Tersedia</h3>
-                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
-                    <button class="btn"
-                        style="width: 100%; justify-content: flex-start; background: rgba(99, 102, 241, 0.1); color: var(--primary);">
-                        🏥 Booking Penitipan
-                    </button>
-                    <button class="btn"
-                        style="width: 100%; justify-content: flex-start; background: rgba(236, 72, 153, 0.1); color: var(--secondary);">
-                        ✂️ Booking Grooming
-                    </button>
+            <nav style="flex: 1; padding: 1rem 0;">
+                <a href="#" class="nav-item active">
+                    <i data-lucide="layout-dashboard" size="20"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="cat" size="20"></i> Hewanku
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="calendar" size="20"></i> Booking
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="history" size="20"></i> Riwayat
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="user" size="20"></i> Profil
+                </a>
+            </nav>
+
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                    <div
+                        style="width: 40px; height: 40px; background: var(--bg-card-hover); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i data-lucide="user" size="20"></i>
+                    </div>
+                    <div>
+                        <p id="userName" style="color: white; font-weight: 600; font-size: 0.9rem;">User</p>
+                        <p style="font-size: 0.75rem;">Pet Owner</p>
+                    </div>
+                </div>
+                <button onclick="auth.logout()" class="btn btn-outline w-full"
+                    style="font-size: 0.8rem; padding: 0.5rem;">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header Mobile -->
+            <div class="md:hidden"
+                style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: 700;">CarePet.</span>
+                <button>Menu</button>
+            </div>
+
+            <div class="animate-fade">
+                <header style="margin-bottom: 2.5rem;">
+                    <h1 style="margin-bottom: 0.5rem;">Dashboard</h1>
+                    <p style="font-size: 1.1rem;">Selamat datang kembali! Kelola hewan peliharaan Anda.</p>
+                </header>
+
+                <!-- Status Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="margin-bottom: 2rem;">
+                    <!-- Active Status -->
+                    <div class="card"
+                        style="background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none;">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h2 style="color: white; opacity: 0.9; font-size: 1.1rem;">Status Penitipan</h2>
+                                <p style="color: white; opacity: 0.7; font-size: 0.9rem; margin-bottom: 1rem;">Tidak ada
+                                    penitipan aktif</p>
+                                <button class="btn"
+                                    style="background: rgba(255,255,255,0.2); color: white; font-size: 0.85rem; padding: 0.5rem 1rem;">Booking
+                                    Sekarang</button>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 8px; width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;">
+                                <i data-lucide="hotel" size="20"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card flex flex-col justify-center">
+                        <div class="flex gap-4">
+                            <button class="btn btn-primary" style="flex: 1;">
+                                <i data-lucide="plus" size="18" style="margin-right: 8px;"></i> Booking
+                            </button>
+                            <button class="btn btn-outline" style="flex: 1;">
+                                <i data-lucide="search" size="18" style="margin-right: 8px;"></i> Layanan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Pets List -->
+                    <div class="card flex flex-col" style="min-height: 400px;">
+                        <div class="flex justify-between items-center" style="margin-bottom: 1.5rem;">
+                            <h3>Hewan Peliharaan</h3>
+                            <button onclick="showAddPetModal()" class="btn btn-outline"
+                                style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">+ Tambah</button>
+                        </div>
+                        <div id="petsList" style="flex: 1; display: flex; flex-direction: column; gap: 1rem;">
+                            <p style="font-style: italic; color: var(--text-muted);">Memuat data...</p>
+                        </div>
+                    </div>
+
+                    <!-- Services/History (Placeholder) -->
+                    <div class="card">
+                        <div class="flex justify-between items-center" style="margin-bottom: 1.5rem;">
+                            <h3>Riwayat Transaksi</h3>
+                            <a href="#" style="color: var(--primary); font-size: 0.85rem;">Lihat Semua</a>
+                        </div>
+                        <div style="opacity: 0.5; text-align: center; padding: 3rem 0;">
+                            <i data-lucide="clipboard-list" size="48"
+                                style="margin-bottom: 1rem; color: var(--text-muted);"></i>
+                            <p>Belum ada transaksi</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script src="/js/auth.js"></script>
     <script>
-        // Auth Guard
+        // Start Lucide Icons
+        lucide.createIcons();
+
+        // Auth Logic
         const user = auth.getUser();
-        if (!user) {
-            window.location.href = '/login.html';
-        } else {
-            document.getElementById('userName').textContent = user.name || 'User';
-        }
-
-        const petsList = document.getElementById('petsList');
-
-        async function loadPets() {
-            try {
-                petsList.innerHTML = '<p style="color: var(--text-muted);">Memuat data...</p>';
-                const pets = await auth.fetch('/pets');
-
-                if (pets.length === 0) {
-                    petsList.innerHTML = `
-                        <div style="text-align: center; padding: 2rem; border: 1px dashed var(--border-color); border-radius: var(--radius-md);">
-                            <p style="margin-bottom: 0.5rem;">Belum ada hewan peliharaan.</p>
-                            <button onclick="showAddPetModal()" class="btn btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Tambah Baru</button>
-                        </div>
-                    `;
-                    return;
-                }
-
-                petsList.innerHTML = pets.map(pet => `
-                    <div style="background: var(--bg-dark); padding: 1rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
-                                🐾
-                            </div>
-                            <div>
-                                <h4 style="font-weight: 600; color: var(--text-main);">${pet.nama_hewan}</h4>
-                                <p style="font-size: 0.875rem; color: var(--text-muted);">${pet.jenis} • ${pet.usia} tahun</p>
-                            </div>
-                        </div>
-                        <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 0.25rem 0.5rem; border-radius: 999px;">Aktif</span>
-                    </div>
-                `).join('');
-
-            } catch (e) {
-                console.error(e);
-                petsList.innerHTML = `<p style="color: #ef4444;">Gagal memuat data.</p>`;
-            }
-        }
-
-        // Initial Load
-        loadPets();
+        if (!user) window.location.href = '/login.html';
+        else document.getElementById('userName').innerText = user.name || 'User';
 
         function showAddPetModal() {
             window.location.href = '/create-pet.html';
         }
+
+        async function loadPets() {
+            const list = document.getElementById('petsList');
+            try {
+                const pets = await auth.fetch('/pets');
+                if (!pets.length) {
+                    list.innerHTML = `
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; opacity: 0.6;">
+                            <i data-lucide="cat" size="40" style="margin-bottom: 1rem;"></i>
+                            <p>Belum ada hewan peliharaan</p>
+                        </div>
+                    `;
+                    lucide.createIcons();
+                    return;
+                }
+
+                list.innerHTML = pets.map(p => `
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                        <div style="display:flex; align-items: center; gap: 1rem;">
+                            <div style="width: 48px; height: 48px; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                                ${p.jenis === 'Kucing' ? '🐱' : p.jenis === 'Anjing' ? '🐶' : '🐾'}
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600; color: white;">${p.nama_hewan}</h4>
+                                <p style="font-size: 0.8rem;">${p.jenis} • ${p.usia} Tahun</p>
+                            </div>
+                        </div>
+                        <span style="font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 1rem; background: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 500;">
+                            Sehat
+                        </span>
+                    </div>
+                `).join('');
+
+            } catch (e) { list.innerText = "Gagal memuat."; }
+        }
+        loadPets();
     </script>
 </body>
 

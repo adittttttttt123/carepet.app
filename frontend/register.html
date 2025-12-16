@@ -6,50 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar - CarePet</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+<body
+    style="background: radial-gradient(circle at center, #1e1e24 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; min-height: 100vh;">
 
-    <div class="card" style="width: 100%; max-width: 500px;">
+    <div class="card glass animate-fade" style="width: 100%; max-width: 500px; padding: 2.5rem; margin: 2rem 1rem;">
         <div style="text-align: center; margin-bottom: 2rem;">
-            <h1 style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">CarePet.</h1>
-            <p style="color: var(--text-muted);">Buat akun baru</p>
+            <h1 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Buat Akun Baru</h1>
+            <p>Bergabung dengan komunitas CarePet hari ini.</p>
         </div>
 
         <form id="registerForm">
-            <div class="form-group">
-                <label class="form-label">Nama Lengkap</label>
-                <input type="text" id="nama" class="form-input" placeholder="Budi Santoso" required>
+            <div class="input-group">
+                <label class="label">Nama Lengkap</label>
+                <input type="text" id="nama" class="input" placeholder="Budi Santoso" required>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" id="email" class="form-input" placeholder="nama@email.com" required>
+            <div class="input-group">
+                <label class="label">Email Address</label>
+                <input type="email" id="email" class="input" placeholder="name@email.com" required>
             </div>
 
-            <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1.25rem;">
-                <div>
-                    <label class="form-label">No. HP</label>
-                    <input type="tel" id="no_hp" class="form-input" placeholder="0812..." required>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="input-group">
+                    <label class="label">No. HP</label>
+                    <input type="tel" id="no_hp" class="input" placeholder="0812..." required>
                 </div>
-                <div>
-                    <label class="form-label">Alamat</label>
-                    <input type="text" id="alamat" class="form-input" placeholder="Jl. Mawar No. 1" required>
+                <div class="input-group">
+                    <label class="label">Alamat</label>
+                    <input type="text" id="alamat" class="input" placeholder="Kota..." required>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Password</label>
-                <input type="password" id="password" class="form-input" placeholder="******" required>
+            <div class="input-group">
+                <label class="label">Password</label>
+                <input type="password" id="password" class="input" placeholder="••••••••" required>
             </div>
 
-            <div id="errorMsg" style="color: #ef4444; font-size: 0.875rem; margin-bottom: 1rem; display: none;"></div>
+            <div id="errorMsg" style="color: var(--danger); font-size: 0.875rem; margin-bottom: 1.5rem; display: none;">
+            </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Daftar</button>
+            <button type="submit" class="btn btn-primary w-full" style="padding: 0.875rem;">Daftar Sekarang</button>
         </form>
 
-        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
-            Sudah punya akun? <a href="/login.html" style="color: var(--primary);">Masuk disini</a>
+        <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem;">
+            Sudah punya akun? <a href="/login.html" style="color: var(--primary); font-weight: 600;">Login</a>
         </p>
     </div>
 
@@ -67,7 +70,6 @@
             try {
                 errorDiv.style.display = 'none';
                 await auth.register({ nama, email, no_hp, alamat, password });
-                // Auto login or redirect to login
                 window.location.href = '/login.html';
             } catch (err) {
                 errorDiv.textContent = err.message;
